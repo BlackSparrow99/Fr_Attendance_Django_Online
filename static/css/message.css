@@ -1,0 +1,40 @@
+.messages {
+    margin: 10px 0;
+    padding: 0;
+    width: 100%; /* Matches the parent container width */
+    box-sizing: border-box; /* Ensures padding is included in width */
+    text-align: center; /* Centers the text */
+}
+
+.message {
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    color: #fff;
+    font-size: 14px;
+    text-align: center; /* Optional for text alignment */
+}
+
+.message.error {
+    background-color: #f4433636; /* Error red */
+    border: 2px solid #d32f2f;
+    color: #d32f2f;
+}
+
+.message.success {
+    background-color: #4caf4f3a; /* Success green */
+    border: 1px solid #388e3c;
+    color: #388e3c;;
+}
+
+.message.info {
+    background-color: #2195f331; /* Info blue */
+    border: 1px solid #1976d2;
+    color: #1976d2;
+}
+
+.message.warning {
+    background-color: #ff990031; /* Warning orange */
+    border: 1px solid #f57c00;
+    color: #f57c00;
+}

@@ -1,0 +1,32 @@
+
+{% autoescape off %}
+    Hi {{user.username}}
+    Please use the link below to verify your account.
+
+    http://{{domain}}{% url 'activate' uidb64=uid token=token %}
+{% endautoescape %}
+
+{% comment %} 
+{% load static %}
+
+<div class="ui grid">
+    <div class="four wide column"></div>
+    <div class="eight wide column">
+        <div class="ui middle aligned center aligned grid">
+            <div class="column mt-5">
+                <h2 class="ui primary image header">
+                    <img src="{% static 'img/LOGO.png' %}" class="image" alt="Logo here">
+                    <div class="content">Hi {{user.username}}</div>
+                    <div class="content">Please use the link below to verify your account.</div>
+                </h2>
+                <div class="ui message">
+                    {% autoescape off %}
+                        http://{{domain}}{% url 'activate' uidb64=uid token=token %}
+                    {% endautoescape %}
+                </div>
+                <div class="four wide column"></div>
+            </div>
+        </div>
+    </div>
+</div> 
+{% endcomment %}

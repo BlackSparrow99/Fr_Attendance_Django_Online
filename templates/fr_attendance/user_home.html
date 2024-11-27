@@ -1,0 +1,41 @@
+{% extends '_partials/base.html' %}
+
+{% block title %}
+Home
+{% endblock title %}
+
+{% load static %}
+
+{% block content %}
+<div class="body-content">
+  <div class="adjust-content">
+    <div class="hero-section">
+      {% if request.user.is_authenticated %}
+        <h1>{{request.user.username}}</h1>
+        {% if user.is_superuser %}
+          <p>Admin privileges</p>
+          <button class="get-started">Administrative tools</button>
+        {% elif user.is_staff %}
+            <p>Teacher's or staff privileges</p>
+            <button class="get-started">Teachers's utility</button>
+        {% else %}
+            <p>Student privileges</p>
+            <button class="get-started">Student tools</button>
+        {% endif %}
+      {% else %}
+        <h1>Please Login!</h1>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<!-- Popup HTML -->
+<div id="popup" class="popup hidden">
+  <!-- Placeholder where the navbar will be cloned -->
+  <div id="popup-navbar-placeholder"></div>
+</div>
+
+<div class="body-content2">
+  <img src="{% static 'img/2eSh.gif' %}" height="auto" width="auto" alt="Logo here">
+</div>
+{% endblock content %}

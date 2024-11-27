@@ -1,0 +1,59 @@
+{% load static %}
+<div class="header">
+  <nav class="navbar">
+    <div class="menu-icon" id="menuIcon">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+
+    <ul id="unorderedList" class="unordered-list">
+      <li><a href='{% url "home" %}' class="active">Home</a></li>
+      {% if user.is_authenticated %}
+        {% if user.is_superuser %}
+          <li><a href="{% url 'delete_users' %}">Admin's panel</a></li>
+        {% elif user.is_staff %}
+          <li><a href="#" >Teacher's panel</a></li>
+        {% else %}
+          <li><a href="#">Student's panel</a></li>
+        {% endif %}
+      {% else %}
+        <li><a href="#">Help</a></li>
+      {% endif %}
+      <li><a href="#">About</a></li>
+    </ul>
+    {% if user.is_authenticated %}
+    <div class="auth-buttons">
+      <div class="auth-text" id="authText">{{ user.username }}</div>
+      <div class="img-box">
+        <img src="{% static 'img/WMy8.gif' %}" height="auto" width="auto" alt="Logo here">
+      </div>
+      <div class="side-menu" id="sideMenu">
+        <a href="{% url 'home' %}">Home</a>
+        
+        {% if user.is_superuser %}
+          <a href="#">Message</a>
+          <a href="#">Review reports</a>
+          <a href="#">Life line</a>
+          <a href="#">Requests</a>
+        {% else %}
+          <a href="#">Message</a>
+          <a href="#">Report bugs</a>
+          <a href="#">Help & support</a>
+        {% endif %}
+        <a href="#">About</a>
+        <a class="logout-custom" href="{% url 'logout_user' %}">Logout</a>
+      </div>
+    </div>    
+    {% else %}
+        <div class="auth-buttons">
+          <form method="get" action="{% url 'login' %}">
+            <button type="submit" class="login">Login</button>
+          </form>
+          <form method="get" action="{% url 'register' %}">
+            <button type="submit" class="signup">Sign Up</button>
+          </form>
+        </div>
+    {% endif %}
+  </nav>
+</div>

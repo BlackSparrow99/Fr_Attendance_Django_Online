@@ -1,0 +1,227 @@
+/* Body CSS */
+.header {
+  position: relative;
+}
+
+.body-content {
+  margin-top: 0px;
+  font-family: Arial, sans-serif;
+  background-color:#161515;
+  color: white;
+  padding: 90px 20px;
+}
+  
+.adjust-content{
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+}
+
+.hero-section {
+  max-width: max-content;
+  position: relative;
+  align-items:center;
+  text-align: center;
+  margin: auto;
+  /* max-width: 600px; */
+}
+  
+.hero-section h1 {
+  font-size: 4rem;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+  
+.hero-section p {
+  font-size: 1.7rem;
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+  
+.hero-section .get-started {
+  background-color: #0070d8;
+  color: white;
+  border: none;
+  padding: 13px 32px;
+  font-size: 1rem;
+  font-size: 1.4rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-bottom: 3rem;
+}
+  
+.hero-section .get-started:hover {
+  opacity: 0.9;
+}
+
+.popup {
+  position:fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+/* .popup.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  
+} */
+
+.popup.visible {
+  opacity: 1;
+  visibility: visible;
+
+  .menu-icon{
+    pointer-events: auto;
+  }
+
+  .menu-icon .bar {
+    background-color: #161515;
+  }
+
+  #popup-navbar-placeholder{
+    margin: none;
+    background-color: white;
+  }
+
+  .navbar{
+    margin: none;
+    width: 100%;
+    padding: 10px 0px;
+    z-index: 1000;
+  }
+
+  @media only screen and (min-width: 1200px) {
+    .navbar {
+        width: 1127px;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+  }
+  
+  @media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .navbar {
+      width: 933px;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+  }
+  
+  /* Media query for screens between 768px and 991px */
+  @media only screen and (min-width: 768px) and (max-width: 991px) {
+    .navbar {
+      width: 723px;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+  }
+  
+  /* Hide the menu by default on small screens */
+  @media only screen and (max-width: 767px) {
+    .navbar {
+      width: auto !important;
+      margin-left: 1em !important;
+      margin-right: 1em !important;
+    }
+  }
+
+  .navbar ul{
+    background-color: white;
+  }
+
+  .navbar ul.unordered-list{
+    top: 65px;
+  }
+
+  .navbar ul li a {
+    font-weight: 600;
+    color: #161515c2;
+  }
+  .navbar ul li a:hover {
+    color: black;
+    font-weight: 600;
+    transition: border-color 0.3s ease;
+    border-bottom: 2px solid #161515c2;
+  }
+
+  .navbar ul li a.active{
+    color: black;
+    border-bottom: 2px solid black;
+  }
+
+  .auth-buttons{
+    position: relative;
+  }
+
+  .auth-buttons .login,
+  .auth-buttons .signup {
+    border: 2px solid #161515;
+    background: #ffffff;
+    color: #161515;
+  }
+
+  .auth-buttons .login:hover,
+  .auth-buttons .signup:hover {
+    background:  #005de7;
+    color: rgb(255, 255, 255);
+    border: 2px solid #005de7;
+    font-weight: 550;
+  }
+  .auth-buttons .login:hover {
+    background:  rgb(0, 143, 0);
+    color: rgb(255, 255, 255);
+    border: 2px solid rgb(0, 143, 0);
+    font-weight: 550;
+  }
+
+  .auth-buttons .auth-text{
+    color: #161515c2;
+    font-weight: 500;
+  }
+  
+  .auth-buttons .auth-text:hover{
+    color: black;
+  }
+
+  .side-menu{
+    position: absolute;
+    border: none;
+    box-shadow: 3px 7px 12px rgba(0, 0, 0, 0.267);
+  }
+
+  .side-menu a {
+    color: white;
+    background-color: #161515;
+    border-bottom: .3px solid rgba(133, 133, 133, 0.589);
+  }
+  
+  .side-menu a:hover {
+    color: #161515;
+    background-color: rgba(255, 255, 255, 0.589);
+  }
+
+  .side-menu .logout-custom {
+    display: block;
+    color: white;
+    background-color: red;
+    border-bottom: none;
+  }
+  
+  .side-menu .logout-custom:hover {
+    color: red;
+    background-color: white;
+  }
+}
+
+.body-content2{
+  background-color: white;
+  color: black;
+  padding: 90px 20px;
+  height: 100vh;
+}
+

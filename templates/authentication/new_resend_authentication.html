@@ -1,0 +1,31 @@
+{% extends '_partials/base.html' %}
+
+{% block title %}
+    Login
+{% endblock title %}
+
+{% load static %}
+
+{% block content %}
+<div class="flex-box">
+    <div class="login-container">
+        <div class="logo">
+            <img src="{% static 'img/VZ7i.gif' %}" class="image" alt="Logo here">
+        </div>
+        <h2>Request E-mail Verification</h2>
+        <h2>{% include '_partials/messages.html' %}</h2>
+        <form method="post" action="{% url 'resend_authentication' %}">
+            {% csrf_token %}
+            <input type="text" class="input-field" name="username" placeholder="User name"  value="{{data.username}}">
+            <input type="email" class="input-field" name="email" value="{{data.email}}" placeholder="E-mail address">
+            <button type="submit" class="btn-login">Verify</button>
+        </form>
+        <div class="signup-link">
+            Facing difficulty? <a href="">Contract us</a>
+        </div>
+        <div class="signup-link">
+            Create new account? <a href="{% url 'register' %}">Register</a>
+        </div>
+    </div>
+</div>
+{% endblock content %}

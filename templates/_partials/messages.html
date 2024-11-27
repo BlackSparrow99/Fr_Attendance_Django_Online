@@ -1,0 +1,27 @@
+
+{% comment %} {% if messages %}
+    
+    
+    {% for message in messages %}
+
+    <div class="ui {{message.tags}} message">
+
+        {{message}}
+
+    </div>
+
+    {% endfor %}
+        
+
+{% endif %}
+{% endcomment %}
+
+{% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+            <div class="message {{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}

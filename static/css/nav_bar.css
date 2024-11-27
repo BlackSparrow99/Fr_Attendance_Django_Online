@@ -1,0 +1,293 @@
+/* Body */
+html, body {
+  margin: 0%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header CSS */
+.header {
+  position: relative;
+  top: 0;
+  left: 0;
+  background-color: #161515;
+  z-index: 1000;
+  padding: 22px 0px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 0px;
+}
+
+/* Menu icon (hamburger menu) for small screens */
+.menu-icon {
+  display: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.menu-icon .bar {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  border-radius: 3px;
+  transition: 0.3s;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar ul .unordered-list {
+  opacity: 1;
+  visibility: visible;
+}
+
+.navbar ul li {
+  margin: 0 15px;
+}
+
+.navbar ul li a {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.589);
+  font-weight: 500;
+  padding-bottom: 5px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.589);
+}
+
+.navbar ul li a.active {
+  color: white;
+  border-bottom: 2px solid white;
+}
+
+.auth-buttons {
+  position: relative;
+  display: flex;
+  gap: 10px;
+}
+
+.auth-buttons .login,
+.auth-buttons .signup {
+  border: 2px solid white;
+  background: #161515;;
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+  white-space: nowrap;
+  width: auto;
+  font-size: 16px;
+  text-align: center;
+  box-sizing: border-box;
+
+}
+
+.auth-buttons .login:hover,
+.auth-buttons .signup:hover {
+  background: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  font-weight: 700;
+  border: 2px solid white;
+}
+
+.auth-buttons .auth-text{
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.589);
+  font-weight: 500;
+  padding-bottom: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: border-color 0.3s ease;
+  position: relative;
+}
+
+.auth-buttons .auth-text:hover{
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+
+.img-box {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background-color: rgb(0, 0, 0);
+  position: relative;
+  pointer-events:stroke;
+}
+
+.img-box img {
+  height: 44px;
+  width: 44px; /* Ensures the image fits inside the box */
+  object-fit: cover; /* Ensures image covers the box */
+  border-radius: 50%; /* Keeps the image round */
+}
+
+/* Creating the fading ring effect */
+.img-box::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7), 0 0 40px rgba(0, 0, 0, 0.5), 0 0 60px rgba(255, 255, 255, 0.3); /* Gradual fading */
+}
+
+.side-menu {
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  top: 60px;
+  right: 10px;
+  /* border: 1px solid #161515; */
+  border: none;
+  box-shadow: 2px 7px 12px rgba(88, 88, 88, 0.11);
+  /* box-shadow: 0 5px 12px rgba(0, 0, 0, 0.432); */
+  border-radius: 10px;
+  /* padding-top: 20px; */
+  width: max-content; 
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease, margin-top 0.3s ease;
+  /* background-color: rgba(255, 255, 255, 0.589); */
+}
+.side-menu.visible{
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+  margin-top: 30px;
+}
+
+.side-menu a {
+  display: block;
+  color: #161515;
+  background-color: rgba(255, 255, 255, 0.589);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  text-decoration: none;
+  padding: 5px 20px;
+  border-bottom: 0.3px solid rgba(133, 133, 133, 0.589);
+}
+
+.side-menu a:hover {
+  color: black;
+  background-color: white;
+}
+
+.side-menu .logout-custom {
+  display: block;
+  color: rgba(255, 255, 255, 0.589);
+  background-color: black;
+  border-bottom: none;
+}
+
+.side-menu .logout-custom:hover {
+  color: white;
+  background-color: red;
+}
+
+@media only screen and (min-width: 1200px) {
+  .navbar {
+      width: 1127px;
+      margin-left: auto !important;
+      margin-right: auto !important;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .navbar {
+    width: 933px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+/* Media query for screens between 768px and 991px */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .navbar {
+    width: 723px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+/* Hide the menu by default on small screens */
+@media only screen and (max-width: 767px) {
+  .navbar {
+    width: auto !important;
+    margin-left: 1em !important;
+    margin-right: 1em !important;
+  }
+
+  .navbar ul.unordered-list {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #161515;
+    position: absolute;
+    top: 89px;
+    left: 0px;
+    width: 100%;
+    padding: 40px 0px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, margin-top 0.3s ease;
+  }
+
+  .navbar ul.unordered-list.shown {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+    /* margin-top: 30px; */
+  }
+
+  .menu-icon {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .navbar ul.unordered-list li {
+    margin: 0;
+    padding: 0px 20px;
+  }
+
+  .navbar ul.unordered-list li a {
+    margin-top: 15px;
+    padding: 5px 0;
+    /* padding-top: 20px; */
+    border-bottom: 2px solid transparent;
+  }
+
+  .navbar ul.unordered-list li a:hover {
+    border-bottom: 2px solid white;
+  }
+}

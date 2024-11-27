@@ -1,0 +1,30 @@
+{% extends '_partials/base.html' %}
+
+{% block title %}
+    Login
+{% endblock title %}
+
+{% load static %}
+
+{% block content %}
+<div class="flex-box">
+    <div class="login-container">
+        <div class="logo">
+            <img src="{% static 'img/VZ7i.gif' %}" class="image" alt="Logo here">
+        </div>
+        <h2>Register your account</h2>
+        {% include '_partials/messages.html' %}
+        <form method="post" action="{% url 'register' %}">
+            {% csrf_token %}
+            <input type="text" class="input-field" name="username" value="{{data.username}}" placeholder="User name">
+            <input type="email" class="input-field" name="email" value="{{data.email}}" placeholder="E-mail address">
+            <input type="password" class="input-field" name="password" placeholder="Enter Password">
+            <input type="password" class="input-field" name="password2" placeholder="Repeat password">
+            <button type="submit" class="btn-login">Submit</button>
+        </form>
+        <div class="signup-link">
+            Already have an account? <a href="{% url 'login' %}">Login</a>
+        </div>
+    </div>
+</div>
+{% endblock content %}
