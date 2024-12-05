@@ -13,13 +13,13 @@ Home
       {% if request.user.is_authenticated %}
         <h1>{{request.user.username}}</h1>
         {% if user.is_superuser %}
-          <p>Admin privileges</p>
+          <p>Admin of this system</p>
           <button class="get-started">Administrative tools</button>
         {% elif user.is_staff %}
-            <p>Teacher's or staff privileges</p>
+            <p>Teacher of ____________</p>
             <button class="get-started">Teachers's utility</button>
         {% else %}
-            <p>Student privileges</p>
+            <p>Student of ___________</p>
             <button class="get-started">Student tools</button>
         {% endif %}
       {% else %}

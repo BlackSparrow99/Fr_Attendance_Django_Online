@@ -17,6 +17,7 @@
         <form method="post" action="{% url 'register' %}">
             {% csrf_token %}
             <input type="text" class="input-field" name="username" value="{{data.username}}" placeholder="User name">
+            <input type="text" class="input-field" name="identifier" value="{{data.identifier}}" placeholder="Your ID">
             <input type="email" class="input-field" name="email" value="{{data.email}}" placeholder="E-mail address">
             <input type="password" class="input-field" name="password" placeholder="Enter Password">
             <input type="password" class="input-field" name="password2" placeholder="Repeat password">

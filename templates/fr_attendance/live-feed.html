@@ -1,0 +1,51 @@
+
+{% extends '_partials/base.html' %}
+
+{% load static %}
+
+{% block title %}
+Live-feed
+{% endblock title %}
+
+{% block content %}
+<div class="media-container">
+    <h1>Live Feed Face Recognition</h1>
+
+    <h2>{% include '_partials/messages.html' %}</h2>
+
+    {% comment %} {% if error %}
+    <p style="color: red;">{{ error }}</p>
+    {% endif %} {% endcomment %}
+
+    <!-- Form to input classroom_id -->
+    <form class="flex-forms" method="get" action="{% url 'live_feed' %}">
+        <input type="text" class="input-field" id="classroom_id" name="classroom_id" placeholder="Enter classroom id">
+        <label for="classroom_id" style="width: 0%;">Classroom ID:</label>
+        <button type="submit" class="btn">Record</button>
+    </form>
+
+    <!-- Display the live feed after the user inputs the classroom_id -->
+    {% if classroom_id %}
+    <div class="live-feed-container">
+        <img src="{% url 'live_feed' %}?classroom_id={{ classroom_id }}" alt="Live feed" class="live-feed-image">
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% comment %} {% extends '_partials/base.html' %}
+
+{% load static %}
+
+{% block title %}
+Live-feed
+{% endblock title %}
+
+{% block content %}
+<div class="media-container">
+    <h1>Live Feed Face Recognition</h1>
+    <div class="live-feed-container">
+        <img src="{% url 'live_feed' %}" alt="Live feed" class="live-feed-image">
+    </div>
+</div>
+{% endblock %} {% endcomment %}

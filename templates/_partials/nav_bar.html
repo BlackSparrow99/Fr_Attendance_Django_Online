@@ -10,18 +10,19 @@
     <ul id="unorderedList" class="unordered-list">
       <li><a href='{% url "home" %}' class="active">Home</a></li>
       {% if user.is_authenticated %}
-        {% if user.is_superuser %}
-          <li><a href="{% url 'delete_users' %}">Admin's panel</a></li>
-        {% elif user.is_staff %}
-          <li><a href="#" >Teacher's panel</a></li>
-        {% else %}
-          <li><a href="#">Student's panel</a></li>
-        {% endif %}
+          {% if user.is_superuser %}
+              <li><a href="{% url 'delete_users' %}">Admin's panel</a></li>
+          {% elif user.is_staff %}
+              <li><a href="#">Teacher's panel</a></li>
+              <li><a href="{% url 'video_feed' %}">Live feed</a></li>
+          {% else %}
+              <li><a href="#">Student's panel</a></li>
+          {% endif %}
       {% else %}
-        <li><a href="#">Help</a></li>
+          <li><a href="#">Help</a></li>
       {% endif %}
       <li><a href="#">About</a></li>
-    </ul>
+  </ul>
     {% if user.is_authenticated %}
     <div class="auth-buttons">
       <div class="auth-text" id="authText">{{ user.username }}</div>

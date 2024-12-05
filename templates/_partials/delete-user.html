@@ -1,0 +1,43 @@
+{% extends '_partials/base.html' %}
+
+{% block title %}
+    Admin Panel
+{% endblock title %}
+
+{% load static %}
+
+{% block content %}
+    
+    <div class="ui grid">
+        <div class="four wide column"></div>
+        <div class="eight wide column">
+            <div class="ui middle aligned center aligned grid">
+                <div class="column mt-5">
+                    <h2 class="ui primary image header">
+                        <img src="{% static 'img/LOGO.png' %}" class="image" alt="Logo here">
+                        <div class="content">Admin Panel</div>
+                    </h2>
+                    {% include '_partials/messages.html' %}
+                    <form class="ui large form" method="post" action="{% url 'delete_users' %}">
+                        {% csrf_token %}
+                        <div class="ui stacked segment">
+                            <div class="field">
+                                <div class="ui left icon input">
+                                    <i class="user icon"></i>
+                                    <input type="text" name="username" placeholder="User name"  value="{{data.username}}">
+                                </div>
+                            </div>
+                            <button class="ui fluid large primary submit button">Delete</button>
+                        </div>
+                    </form>
+
+                    <div class="ui red bold message">
+                        Warning! This panel removes users from the user model.
+                    </div>
+                    <div class="four wide column"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock content %}

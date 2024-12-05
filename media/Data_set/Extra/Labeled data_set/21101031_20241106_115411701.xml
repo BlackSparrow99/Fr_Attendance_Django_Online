@@ -1,0 +1,26 @@
+<annotation>
+	<folder>Face_recognition</folder>
+	<filename>21101031_20241106_115411701.jpg</filename>
+	<path>F:\Codes\Python\Face_detection\Data_set\Face_recognition\21101031_20241106_115411701.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>3024</width>
+		<height>4032</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>21101031</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>552</xmin>
+			<ymin>720</ymin>
+			<xmax>2325</xmax>
+			<ymax>3665</ymax>
+		</bndbox>
+	</object>
+</annotation>

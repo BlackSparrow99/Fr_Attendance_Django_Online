@@ -1,0 +1,53 @@
+{% extends '_partials/base.html' %}
+
+{% block title %}
+    Login
+{% endblock title %}
+
+{% load static %}
+
+{% block content %}
+    
+    <div class="ui grid">
+        <div class="four wide column"></div>
+        <div class="eight wide column">
+            <div class="ui middle aligned center aligned grid">
+                <div class="column mt-5">
+                    <h2 class="ui primary image header">
+                        {% comment %} <img src="{% static 'img/LOGO.png' %}" class="image" alt="Logo here"> {% endcomment %}
+                        <img src="{% static 'img/6yro.gif' %}" class="image" alt="Logo here">
+                        <div class="content">Login</div>
+                    </h2>
+                    {% include '_partials/messages.html' %}
+                    <form class="ui large form" method="post" action="{% url 'login' %}">
+                        {% csrf_token %}
+                        <div class="ui stacked segment">
+                            <div class="field">
+                                <div class="ui left icon input">
+                                    <i class="user icon"></i>
+                                    <input type="text" required name="username" placeholder="User name"  value="{{data.username}}">
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="ui left icon input">
+                                    <i class="lock icon"></i>
+                                    <input type="password" required name="password" placeholder="Password">
+                                </div>
+                            </div>
+                            <button class="ui fluid large primary submit button">Login</button>
+                        </div>
+                    </form>
+
+                    <div class="ui message">
+                        Dont have account? 
+                        <a href="{% url 'register' %}">
+                            Register
+                        </a>
+                    </div>
+                    <div class="four wide column"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock content %}

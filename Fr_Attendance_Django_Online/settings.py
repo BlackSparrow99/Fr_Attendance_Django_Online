@@ -136,8 +136,12 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = "static/"
-
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static/")]
+
+# settings.py
+MEDIA_URL = '/media/'  # URL for media files
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Directory for storing media files on the filesystem
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

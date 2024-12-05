@@ -12,11 +12,11 @@
         <div class="logo" style="border: 1px solid red;">
             <img src="{% static 'img/6yro.gif' %}" class="image" alt="Logo here">
         </div>
-        <h2>Enter name of user</h2>
+        <h2>Enter email of user</h2>
         <h2>{% include '_partials/messages.html' %}</h2>
         <form method="post" action="{% url 'delete_users' %}">
             {% csrf_token %}
-            <input type="text" class="input-field" name="username" placeholder="User name"  value="{{data.username}}">
+            <input type="email" class="input-field" name="email" placeholder="E-mali"  value="{{data.email}}">
             <button type="submit" class="btn-login" style="color: red;">Delete</button>
         </form>
         <div class="signup-link" style="color: red;">
