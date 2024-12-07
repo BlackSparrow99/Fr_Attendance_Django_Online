@@ -11,7 +11,10 @@ Home
   <div class="adjust-content">
     <div class="hero-section">
       {% if request.user.is_authenticated %}
-        <h1>{{request.user.username}}</h1>
+      <div class="messages-container" id="messages-container" data-timeout="3000">
+        {% include '_partials/messages.html' %}
+      </div>
+      <h1>{{request.user.username}}</h1>
         {% if user.is_superuser %}
           <p>Admin of this system</p>
           <button class="get-started">Administrative tools</button>

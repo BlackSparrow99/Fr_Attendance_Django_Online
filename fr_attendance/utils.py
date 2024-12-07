@@ -13,15 +13,12 @@ class FaceRecognitionAttendance:
     def __init__(self, classroom_id):
         self.classroom_id = classroom_id
 
-        self.dataset_path = os.path.join(settings.MEDIA_ROOT, "Data_set", "Face_recognition", classroom_id)
         self.attendance_path = os.path.join(settings.MEDIA_ROOT, "Attendance", classroom_id)
-        self.encoded_file = os.path.join(settings.MEDIA_ROOT, "Data_set", "Face_recognition", classroom_id, "encoded_faces.pkl")
+        self.dataset_path = os.path.join(settings.MEDIA_ROOT, "Data_set", "Face_recognition")
+        self.encoded_file = os.path.join(settings.MEDIA_ROOT, "Data_set", "Face_recognition", "encoded_faces.pkl")
 
         self.encoded_list = []
         self.classNames = []
-        # self.dataset_path = base_path
-        # self.attendance_file = os.path.join(base_path, f"{datetime.now().strftime('%d-%m-%Y')}.csv")
-        # self.encoded_file = os.path.join(base_path, "encoded_faces.pkl")
 
         # Ensure dataset folder exists
         if not os.path.exists(self.dataset_path):
@@ -59,19 +56,23 @@ class FaceRecognitionAttendance:
             print("\tEncodings created and saved.")
 
     def record_attendance(self, name):
-        current_date = datetime.now().strftime("%d-%m-%Y")
-        file_path = os.path.join(self.attendance_path, f"{current_date}.csv")
+        from .views import record_attendance_in_CSV, record_attendance_in_database  # Local import
 
-        if not os.path.exists(file_path):
-            with open(file_path, 'w') as f:
-                f.write("Name,Time\n")
+        student_id = name
+        classroom_id = self.classroom_id
+        status = "Present"
 
-        # Open the attendance file and add the name if it's not already recorded
-        with open(file_path, "r+") as f:
-            name_list = [line.split(",")[0] for line in f.readlines()]
-            if name not in name_list:
-                f.write(f"{name},{datetime.now().strftime('%H:%M:%S')}\n")
-                print(f"\t{name} recorded in attendance.")
+        # Record attendance in CSV file (your existing logic)
+        record_attendance_in_CSV(student_id, classroom_id)
+
+        # Record attendance in the database
+        attendance_record = record_attendance_in_database(student_id, classroom_id, status)
+
+        # Provide feedback to the user
+        if attendance_record[0]:
+            print("Success", attendance_record[1])
+        else:
+            print("Info", attendance_record[1])
 
     def threaded_attendance(self, name):
         if name != "Unknown Person":
@@ -117,19 +118,17 @@ class FaceRecognitionAttendance:
                     name = "Unknown Person"
 
                 y1, x2, y2, x1 = [coord * mup for coord in face_location]
-                cv2.rectangle(img_original, (x1, y1), (x2, y2), (0, 255, 0), 1)
-                cv2.rectangle(img_original, (x1, y2 + 35), (x2, y2), (0, 255, 0), cv2.FILLED)
-                cv2.putText(img_original, name, (x1 + 6, y2 + 14), cv2.FONT_HERSHEY_SIMPLEX, 0.4, (0, 0, 0), 1)
+                cv2.rectangle(img_original, (x1, y1), (x2, y2), (0, 0, 255), 1)
+                cv2.rectangle(img_original, (x1, y2 + 35), (x2, y2), (0, 0, 0), cv2.FILLED)
+                cv2.putText(img_original, name, (x1 + 6, y2 + 14), cv2.FONT_HERSHEY_SIMPLEX, 0.4, (255, 255, 255), 1)
 
                 if name != "Unknown Person":
                     cv2.putText(img_original, f"{round(face_distances[match_index], 10)}", (x1 + 6, y2 + 28),
                                 cv2.FONT_HERSHEY_SIMPLEX, 0.4, (255, 255, 255), 1)
 
-            # Convert frame to jpg and send as streaming data
             _, jpeg = cv2.imencode('.jpg', img_original)
             frame = jpeg.tobytes()
-            yield (b'--frame\r\n'
-                   b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+            yield (b'--frame\r\n'b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
         capture_video.release()
         cv2.destroyAllWindows()

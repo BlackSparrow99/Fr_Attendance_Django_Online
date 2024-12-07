@@ -11,7 +11,7 @@
       <li><a href='{% url "home" %}' class="active">Home</a></li>
       {% if user.is_authenticated %}
           {% if user.is_superuser %}
-              <li><a href="{% url 'delete_users' %}">Admin's panel</a></li>
+              <li><a href="{% url 'delete_users' %}">Manage Account</a></li>
           {% elif user.is_staff %}
               <li><a href="#">Teacher's panel</a></li>
               <li><a href="{% url 'video_feed' %}">Live feed</a></li>
@@ -36,7 +36,7 @@
           <a href="#">Message</a>
           <a href="#">Review reports</a>
           <a href="#">Life line</a>
-          <a href="#">Requests</a>
+          <a href="http://127.0.0.1:8000/app/admin/">Admin Console</a>
         {% else %}
           <a href="#">Message</a>
           <a href="#">Report bugs</a>
